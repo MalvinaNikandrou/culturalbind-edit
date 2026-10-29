@@ -1,0 +1,2 @@
+from .wise_main import apply_wise_to_multimodal_model
+from .wise_multimodal_hparams import WISEMultimodalHyperParams

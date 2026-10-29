@@ -1,0 +1,26 @@
+[project]
+name = "culturalbind-edit"
+version = "0.1.0"
+description = "Knowledge editing experiments for CulturalBind, built on EasyEdit"
+readme = "README.md"
+requires-python = "==3.10.*"
+dependencies = [
+    "accelerate",
+    "bitsandbytes",
+    "datasets",
+    "higher==0.2.1",
+    "huggingface-hub",
+    "openai",
+    "pandas",
+    "pillow",
+    "pydantic",
+    "qwen-vl-utils",
+    "sentence-transformers",
+    "sentencepiece",
+    "tokenizers",
+    "torch",
+    "torchvision",
+    "tqdm",
+    "transformers==4.57.3",
+    "wandb",
+]

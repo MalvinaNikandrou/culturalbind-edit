@@ -1,0 +1,25 @@
+alg_name: "IKE"
+name: google/gemma-3-12b-it
+model_name: google/gemma-3-12b-it
+model_class: Gemma3ForConditionalGeneration
+tokenizer_class: AutoProcessor
+tokenizer_name: google/gemma-3-12b-it
+sentence_model_name: sentence-transformers/all-MiniLM-L6-v2
+device: 0
+results_root_dir: "./results"
+dtype: bfloat16
+
+k: 32
+
+eval_only: False
+
+# Multimodal
+exact_match: True
+task_name: "crope"
+qformer_checkpoint: .
+qformer_name_or_path: .
+state_dict_file: .
+
+# image
+coco_image: ../
+rephrase_image: ../

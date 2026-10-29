@@ -1,0 +1,85 @@
+# Model
+device: "cuda"
+alg_name: "MEND"
+name: Qwen/Qwen3-VL-8B-Instruct
+model_name: Qwen/Qwen3-VL-8B-Instruct
+model_class: Qwen3VLForConditionalGeneration
+tokenizer_class: Qwen3VLProcessor
+tokenizer_name: Qwen/Qwen3-VL-8B-Instruct
+dtype: bfloat16
+inner_params:
+- model.language_model.layers.33.mlp.gate_proj.weight
+- model.language_model.layers.33.mlp.down_proj.weight
+- model.language_model.layers.33.mlp.up_proj.weight
+- model.language_model.layers.34.mlp.gate_proj.weight
+- model.language_model.layers.34.mlp.down_proj.weight
+- model.language_model.layers.34.mlp.up_proj.weight
+- model.language_model.layers.35.mlp.gate_proj.weight
+- model.language_model.layers.35.mlp.down_proj.weight
+- model.language_model.layers.35.mlp.up_proj.weight
+
+
+# Method
+alg_name: MEND
+lr: 1e-6 # outer parameter learning rate
+edit_lr: 1e-4 # base learning rate that gets adapted
+lr_lr: 1e-4
+lr_scale: 1.0
+seed: 42
+cedit: 0.1
+iedit: 0.1
+cloc: 1.0
+cbase: 1.0
+dropout: 0.0
+train_base: False
+no_grad_layers: null
+one_sided: False
+n_hidden: 1
+hidden_dim: null
+init: id
+norm: True
+combine: True
+x_only: False
+delta_only: False
+act: relu
+rank: 1920
+mlp_class: IDMLP
+shared: True
+archive: null #"results_qwen2_5_3B_MEND/models/MEND/Qwen3-VL-8B-Instruct"
+
+# Train
+batch_size: 1
+model_save_pt: 5000
+silent: False
+#max_epochs: 1
+max_iters: 50000
+log_interval: 500
+eval_log_interval: 500
+final_eval: True
+val_interval: 500
+early_stop_patience: 500
+early_stop_key: "loss/total_edit_val"
+eval_only: False
+half: False
+debug: False
+save: False
+verbose: True
+
+val_batch_size: 15
+accumulate_bs: 10
+val_steps: 500 # only for debug
+opt: Adam
+grad_clip: 20.
+
+# Output
+results_root_dir: ./results
+
+# Multimodal
+qformer_checkpoint: .
+qformer_name_or_path: .
+state_dict_file: .
+pretrained_ckpt: .
+
+# image
+coco_image: ../
+rephrase_image: ../

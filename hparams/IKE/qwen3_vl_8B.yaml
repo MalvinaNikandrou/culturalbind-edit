@@ -1,0 +1,25 @@
+alg_name: "IKE"
+name: Qwen/Qwen3-VL-8B-Instruct
+model_name: Qwen/Qwen3-VL-8B-Instruct
+model_class: Qwen3VLForConditionalGeneration
+tokenizer_class: Qwen3VLProcessor
+tokenizer_name: Qwen/Qwen3-VL-8B-Instruct
+sentence_model_name: sentence-transformers/all-MiniLM-L6-v2
+device: 0
+results_root_dir: "./results"
+dtype: bfloat16
+
+k: 32
+
+eval_only: False
+
+# Multimodal
+exact_match: True
+task_name: "crope"
+qformer_checkpoint: .
+qformer_name_or_path: .
+state_dict_file: .
+
+# image
+coco_image: ../
+rephrase_image: ../

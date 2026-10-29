@@ -1,0 +1,15 @@
+.idea
+.vscode
+.venv
+.DS_Store
+**/__pycache__
+**/.cache/
+hugging_cache
+data
+logs
+*.log
+outputs
+plots
+results
+storage
+wandb

@@ -1,0 +1,2 @@
+from .dpo_multimodal_hparams import DPOMultimodalHyperParams
+from .dpo_multimodal_main import apply_dpo_to_multimodal_model
