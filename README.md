@@ -1,6 +1,7 @@
-# CulturalBind: knowledge editing experiments
+# CulturalBind: Knowledge Editing Experiments
 
-Code for the cultural knowledge editing experiments. 
+Code for the cultural knowledge editing experiments in [Evaluating Cultural Knowledge Editing in Vision-Language Models
+](https://arxiv.org/abs/2610.39602). 
 
 This repository is a trimmed fork of [EasyEdit](https://github.com/zjunlp/EasyEdit) that keeps only the code these experiments use.
 
@@ -9,7 +10,7 @@ Edit vision-language models (Qwen3-VL 4B/8B and Gemma 3 12B) with cultural conce
 
 ## Methods
 
-| Name in paper | `--knowledge_editing_method` | Config | Extra options |
+| Name | `--knowledge_editing_method` | Config | Extra options |
 |---|---|---|---|
 | FT-T | `finetune_multimodal` | `hparams/FT/<model>.yaml` | |
 | FT-V | `finetune_multimodal` | `hparams/FT/<model>_proj.yaml` | |
@@ -32,14 +33,14 @@ uv sync
 
 ## Data
 
-Each model has its own edit set on the Hugging Face Hub, because the edits are built from that
-model's pre-edit answers:
+Each model has its own edit set on the Hugging Face Hub, because edits are built from that
+model's pre-edit answers incorrectly:
 
 - `Malvinan/CulturalBind-edit-qwen3-vl-4b`
 - `Malvinan/CulturalBind-edit-qwen3-vl-8b`
 - `Malvinan/CulturalBind-edit-gemma3-12b`
 
-They are downloaded automatically on first use. Each has `train`, `validation` and `test` splits, made
+Each has `train`, `validation` and `test` splits, stratified
 at the concept level. MEND trains its editor on `train`, and all reported results are on `test`.
 
 ## Running the experiments
@@ -82,8 +83,7 @@ uv run python multimodal_edit.py \
 ### Logging
 
 Metrics are logged to [Weights & Biases](https://wandb.ai). Use `--project_name` and `--wandb_entity`
-to choose where runs go, and `--wandb_mode offline` or `--wandb_mode disabled` (or the `WANDB_MODE`
-environment variable) to run without an account. Per-sample scores are also written under `results/`.
+to choose where runs go. Use `--wandb_mode offline` or `--wandb_mode disabled` to run without an account. Per-sample scores are also written under `results/`.
 
 ### Pre-edit cache
 
@@ -104,7 +104,3 @@ Built on [EasyEdit](https://github.com/zjunlp/EasyEdit), released under the MIT 
   year={2023}
 }
 ```
-
-## Citation
-
-The paper is under review. Citation details will be added here once it is public.
